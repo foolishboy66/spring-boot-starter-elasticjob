@@ -9,7 +9,7 @@ spring-boot-starter-elasticjob利用springboot的starter快速集成elasticjob�
 
 ``` java
 <dependency>
-	<groupId>com.github.foolishboy</groupId>
+    <groupId>com.github.foolishboy</groupId>
     <artifactId>spring-boot-starter-elasticjob</artifactId>
     <version>0.0.1-SNAPSHOT</version>
 </dependency>
@@ -26,7 +26,7 @@ public class SimpleJobDemo implements SimpleJob {
     @Override
     public void execute(ShardingContext shardingContext) {
 
-        log.info("当前分片项 shardingItem={}, jobName={}", 								shardingContext.getShardingItem(), shardingContext.getJobName());
+        log.info("当前分片项 shardingItem={}, jobName={}", shardingContext.getShardingItem(), shardingContext.getJobName());
         // do something...
     }
 }
