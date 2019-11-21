@@ -80,7 +80,7 @@ public class ElasticJobAutoConfiguration implements InitializingBean {
 
         JobConfig jobConfig = buildJobConfig(annotation);
 
-        JobCoreConfiguration coreConfiguration = JobCoreConfiguration.newBuilder(jobConfig.getJobName(), jobConfig.getCorn(), jobConfig.getShardingTotalCount())
+        JobCoreConfiguration coreConfiguration = JobCoreConfiguration.newBuilder(jobConfig.getJobName(), jobConfig.getCron(), jobConfig.getShardingTotalCount())
                 .shardingItemParameters(jobConfig.getShardingItemParameters())
                 .jobParameter(jobConfig.getJobParameter())
                 .failover(jobConfig.isFailover())
@@ -111,13 +111,13 @@ public class ElasticJobAutoConfiguration implements InitializingBean {
     private JobConfig buildJobConfig(ElasticJobScheduled annotation) {
 
         String jobName = getValueFromEnvironment(annotation.jobName());
-        String corn = getValueFromEnvironment(annotation.corn());
+        String cron = getValueFromEnvironment(annotation.cron());
         int shardingTotalCount = Integer.parseInt(getValueFromEnvironment(annotation.shardingTotalCount()));
         String shardingItemParameters = getValueFromEnvironment(annotation.shardingItemParameters());
         String jobParameter = getValueFromEnvironment(annotation.jobParameter());
         String description = getValueFromEnvironment(annotation.description());
 
-        return new JobConfig(jobName, corn, shardingTotalCount, shardingItemParameters, jobParameter, description);
+        return new JobConfig(jobName, cron, shardingTotalCount, shardingItemParameters, jobParameter, description);
     }
 
     private String getValueFromEnvironment(String val) {
@@ -145,14 +145,14 @@ public class ElasticJobAutoConfiguration implements InitializingBean {
 
     private void validateElasticJobScheduledAnnotation(ElasticJobScheduled annotation) {
 
-        if (isBlank(annotation.corn())) {
-            logger.error("corn expression can't be null.");
-            throw new RuntimeException("corn expression can't be null.");
+        if (isBlank(annotation.cron())) {
+            logger.error("cron expression can't be null.");
+            throw new RuntimeException("cron expression can't be null.");
         }
 
         if (isBlank(annotation.jobName())) {
             logger.error("jobName can't be null.");
-            throw new RuntimeException("corn expression can't be null.");
+            throw new RuntimeException("jobName can't be null.");
         }
     }
 

@@ -19,8 +19,7 @@ spring-boot-starter-elasticjob利用springboot的starter快速集成elasticjob�
 
 ```java
 @Slf4j
-@Component
-@ElasticJobScheduled(jobName = "${simple.job.demo.job.jobName}", corn = "${simple.job.demo.job.cron}", shardingTotalCount = "${simple.job.demo.job.shardingTotalCount}")
+@ElasticJobScheduled(jobName = "${simple.job.demo.job.jobName}", cron = "${simple.job.demo.job.cron}", shardingTotalCount = "${simple.job.demo.job.shardingTotalCount}")
 public class SimpleJobDemo implements SimpleJob {
 
     @Override
@@ -43,7 +42,7 @@ public class SimpleJobDemo implements SimpleJob {
   spring.elastic-job.reg-center.namespace=elastic-job-lite-springboot
   # 作业名称
   simple.job.demo.job.jobName=SimpleJobDemo
-  # 任务执行的corn表达式
+  # 任务执行的cron表达式
   simple.job.demo.job.cron=0/5 * * * * ?
   # 任务分片总数
   simple.job.demo.job.shardingTotalCount=128
@@ -65,7 +64,7 @@ public class SimpleJobDemo implements SimpleJob {
         job:
           # 作业名称
           jobName: SimpleJobDemoTest
-          # 任务执行的corn表达式
+          # 任务执行的cron表达式
           cron: 0/5 * * * * ?
           # 任务分片总数
           shardingTotalCount: 1

@@ -1,5 +1,7 @@
 package com.github.foolishboy.elasticjob.annotation;
 
+import org.springframework.stereotype.Component;
+
 import java.lang.annotation.*;
 
 /**
@@ -8,6 +10,7 @@ import java.lang.annotation.*;
  * @author wangjinbo[wangjinbo.six@bytedance.com]
  * @date 2019-11-20 16:25
  */
+@Component
 @Documented
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
@@ -21,7 +24,7 @@ public @interface ElasticJobScheduled {
     /**
      * cron表达式，用于控制作业触发时间
      */
-    String corn();
+    String cron();
 
     /**
      * 作业分片总数

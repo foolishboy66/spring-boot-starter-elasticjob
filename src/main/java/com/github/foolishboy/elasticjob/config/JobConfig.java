@@ -16,7 +16,7 @@ public class JobConfig {
     /**
      * cron表达式，用于控制作业触发时间
      */
-    private String corn;
+    private String cron;
 
     /**
      * 作业分片总数
@@ -70,12 +70,12 @@ public class JobConfig {
         this.shardingTotalCount = shardingTotalCount;
     }
 
-    public String getCorn() {
-        return corn;
+    public String getCron() {
+        return cron;
     }
 
-    public void setCorn(String corn) {
-        this.corn = corn;
+    public void setCron(String cron) {
+        this.cron = cron;
     }
 
     public String getShardingItemParameters() {
@@ -121,9 +121,9 @@ public class JobConfig {
     public JobConfig() {
     }
 
-    public JobConfig(String jobName, String corn, int shardingTotalCount, String shardingItemParameters, String jobParameter, String description) {
+    public JobConfig(String jobName, String cron, int shardingTotalCount, String shardingItemParameters, String jobParameter, String description) {
         this.jobName = jobName;
-        this.corn = corn;
+        this.cron = cron;
         this.shardingTotalCount = shardingTotalCount;
         this.shardingItemParameters = shardingItemParameters;
         this.jobParameter = jobParameter;
